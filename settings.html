@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debt Mate - الإعدادات</title>
+    
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/settings.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-coins"></i>
+            <h2>Debt Mate</h2>
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="debts.html" class="nav-item">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <span>الديون</span>
+            </a>
+            <a href="payments.html" class="nav-item">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>السداد</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>التقارير</span>
+            </a>
+            <a href="notifications.html" class="nav-item">
+                <i class="fas fa-bell"></i>
+                <span>التنبيهات</span>
+            </a>
+            <a href="settings.html" class="nav-item active">
+                <i class="fas fa-cog"></i>
+                <span>الإعدادات</span>
+            </a>
+        </nav>
+
+        <div class="user-profile">
+            <div class="user-avatar">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="user-info">
+                <h4>أحمد محمد</h4>
+                <p>مدير النظام</p>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="page-header">
+            <div class="header-content">
+                <h1><i class="fas fa-cog"></i> الإعدادات</h1>
+                <p>إدارة إعدادات حسابك وتفضيلات النظام</p>
+            </div>
+        </header>
+
+        <section class="settings-nav">
+            <button class="settings-nav-btn active" data-section="account">
+                <i class="fas fa-user"></i>
+                <span>الحساب</span>
+            </button>
+            <button class="settings-nav-btn" data-section="security">
+                <i class="fas fa-shield-alt"></i>
+                <span>الأمان</span>
+            </button>
+            <button class="settings-nav-btn" data-section="notifications">
+                <i class="fas fa-bell"></i>
+                <span>التنبيهات</span>
+            </button>
+            <button class="settings-nav-btn" data-section="appearance">
+                <i class="fas fa-palette"></i>
+                <span>المظهر</span>
+            </button>
+            <button class="settings-nav-btn" data-section="preferences">
+                <i class="fas fa-sliders-h"></i>
+                <span>التفضيلات</span>
+            </button>
+            <button class="settings-nav-btn" data-section="about">
+                <i class="fas fa-info-circle"></i>
+                <span>حول</span>
+            </button>
+        </section>
+
+        <div class="settings-content">
+            
+            <section class="settings-section active" id="account-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-user"></i> إعدادات الحساب</h2>
+                </div>
+
+                <div class="settings-card">
+                    <h3>المعلومات الشخصية</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>الاسم الكامل</label>
+                            <input type="text" value="أحمد محمد حسن">
+                        </div>
+                        <div class="form-group">
+                            <label>البريد الإلكتروني</label>
+                            <input type="email" value="ahmed.mohamed@debtmate.com">
+                        </div>
+                        <div class="form-group">
+                            <label>رقم الهاتف</label>
+                            <input type="tel" value="+20 123 456 7890">
+                        </div>
+                        <div class="form-group">
+                            <label>العنوان</label>
+                            <input type="text" value="القاهرة، مصر">
+                        </div>
+                    </div>
+                    <button class="btn-save">
+                        <i class="fas fa-save"></i>
+                        حفظ التغييرات
+                    </button>
+                </div>
+
+                <div class="settings-card">
+                    <h3>صورة الملف الشخصي</h3>
+                    <div class="avatar-section">
+                        <div class="avatar-preview">
+                            <img src="https://ui-avatars.com/api/?name=Ahmed+Mohamed&background=522B5B&color=FBE4D8&size=200" alt="Avatar">
+                        </div>
+                        <div class="avatar-buttons">
+                            <button class="btn-secondary">
+                                <i class="fas fa-upload"></i>
+                                رفع صورة
+                            </button>
+                            <button class="btn-danger-outline">
+                                <i class="fas fa-trash"></i>
+                                حذف
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="settings-section" id="security-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-shield-alt"></i> الأمان والخصوصية</h2>
+                </div>
+
+                <div class="settings-card">
+                    <h3>تغيير كلمة المرور</h3>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>كلمة المرور الحالية</label>
+                            <input type="password" placeholder="••••••••">
+                        </div>
+                        <div class="form-group">
+                            <label>كلمة المرور الجديدة</label>
+                            <input type="password" placeholder="••••••••">
+                        </div>
+                        <div class="form-group">
+                            <label>تأكيد كلمة المرور</label>
+                            <input type="password" placeholder="••••••••">
+                        </div>
+                    </div>
+                    <button class="btn-save">
+                        <i class="fas fa-key"></i>
+                        تحديث كلمة المرور
+                    </button>
+                </div>
+
+                <div class="settings-card">
+                    <h3>المصادقة الثنائية</h3>
+                    <div class="toggle-item">
+                        <div class="toggle-info">
+                            <h4>التحقق بخطوتين</h4>
+                            <p>أضف طبقة أمان إضافية لحسابك</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <h3>الأجهزة المتصلة</h3>
+                    <div class="device-list">
+                        <div class="device-item">
+                            <div class="device-icon">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <div class="device-info">
+                                <h4>Windows PC</h4>
+                                <p>آخر نشاط: اليوم</p>
+                            </div>
+                            <span class="current-badge">الحالي</span>
+                        </div>
+                        <div class="device-item">
+                            <div class="device-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="device-info">
+                                <h4>iPhone 13</h4>
+                                <p>آخر نشاط: أمس</p>
+                            </div>
+                            <button class="btn-sm btn-danger-outline">إنهاء</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="settings-section" id="notifications-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-bell"></i> إعدادات التنبيهات</h2>
+                </div>
+
+                <div class="settings-card">
+                    <h3>أنواع التنبيهات</h3>
+                    <div class="toggle-list">
+                        <div class="toggle-item">
+                            <div class="toggle-info">
+                                <h4>تنبيهات الديون المتأخرة</h4>
+                                <p>إشعار فوري عند تأخر أي دين</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-item">
+                            <div class="toggle-info">
+                                <h4>تذكيرات الدفعات القادمة</h4>
+                                <p>تنبيه قبل موعد الاستحقاق</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-item">
+                            <div class="toggle-info">
+                                <h4>تأكيدات السداد</h4>
+                                <p>إشعار عند إتمام عملية دفع</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-item">
+                            <div class="toggle-info">
+                                <h4>التقارير الأسبوعية</h4>
+                                <p>ملخص أسبوعي لحالتك المالية</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <h3>قنوات التنبيه</h3>
+                    <div class="toggle-list">
+                        <div class="toggle-item">
+                            <div class="toggle-info">
+                                <h4>إشعارات الموقع</h4>
+                                <p>تنبيهات داخل التطبيق</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-item">
+                            <div class="toggle-info">
+                                <h4>البريد الإلكتروني</h4>
+                                <p>إرسال عبر البريد</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-item">
+                            <div class="toggle-info">
+                                <h4>رسائل SMS</h4>
+                                <p>تنبيهات نصية</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="settings-section" id="appearance-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-palette"></i> المظهر</h2>
+                </div>
+
+                <div class="settings-card">
+                    <h3>السمة</h3>
+                    <div class="theme-grid">
+                        <div class="theme-card active">
+                            <div class="theme-preview dark"></div>
+                            <span>داكن</span>
+                        </div>
+                        <div class="theme-card">
+                            <div class="theme-preview light"></div>
+                            <span>فاتح</span>
+                        </div>
+                        <div class="theme-card">
+                            <div class="theme-preview auto"></div>
+                            <span>تلقائي</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <h3>اللون الرئيسي</h3>
+                    <div class="color-grid">
+                        <button class="color-box active" data-color="purple"></button>
+                        <button class="color-box blue" data-color="blue"></button>
+                        <button class="color-box green" data-color="green"></button>
+                        <button class="color-box red" data-color="red"></button>
+                        <button class="color-box orange" data-color="orange"></button>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <h3>حجم الخط</h3>
+                    <div class="font-size-options">
+                        <button class="font-option">
+                            <span class="small">أ</span>
+                            <span>صغير</span>
+                        </button>
+                        <button class="font-option active">
+                            <span class="medium">أ</span>
+                            <span>متوسط</span>
+                        </button>
+                        <button class="font-option">
+                            <span class="large">أ</span>
+                            <span>كبير</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="settings-section" id="preferences-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-sliders-h"></i> التفضيلات</h2>
+                </div>
+
+                <div class="settings-card">
+                    <h3>اللغة والمنطقة</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>اللغة</label>
+                            <select>
+                                <option selected>العربية</option>
+                                <option>English</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>المنطقة الزمنية</label>
+                            <select>
+                                <option selected>القاهرة (GMT+2)</option>
+                                <option>الرياض (GMT+3)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>العملة</label>
+                            <select>
+                                <option selected>جنيه مصري (ج.م)</option>
+                                <option>دولار ($)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>تنسيق التاريخ</label>
+                            <select>
+                                <option selected>يوم/شهر/سنة</option>
+                                <option>شهر/يوم/سنة</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn-save">
+                        <i class="fas fa-save"></i>
+                        حفظ التغييرات
+                    </button>
+                </div>
+
+                <div class="settings-card">
+                    <h3>خيارات النظام</h3>
+                    <div class="toggle-list">
+                        <div class="toggle-item">
+                            <div class="toggle-info">
+                                <h4>الأصوات</h4>
+                                <p>تشغيل الأصوات عند الإشعارات</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-item">
+                            <div class="toggle-info">
+                                <h4>التحديثات التلقائية</h4>
+                                <p>تحديث التطبيق تلقائياً</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="settings-section" id="about-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-info-circle"></i> حول التطبيق</h2>
+                </div>
+
+                <div class="settings-card about-card">
+                    <div class="app-logo">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>Debt Mate</h3>
+                    <p class="version">الإصدار 1.0.0</p>
+                    <p class="description">
+                        نظام متكامل لإدارة الديون ومتابعة عمليات السداد.
+                        تم تطويره بواسطة فريق BIS-88 من معهد العبور العالي.
+                    </p>
+                    
+                    <div class="app-info">
+                        <div class="info-row">
+                            <i class="fas fa-calendar"></i>
+                            <span>تاريخ الإصدار: فبراير 2026</span>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-users"></i>
+                            <span>فريق BIS-88</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary btn-full">
+                        <i class="fas fa-sync"></i>
+                        التحقق من التحديثات
+                    </button>
+                </div>
+
+                <div class="settings-card">
+                    <h3>الفريق</h3>
+                    <div class="team-list">
+                        <p>• ندي محمد سليم عطية</p>
+                        <p>• منة وائل فوزي السيد</p>
+                        <p>• مي محسن عبدالعال يوسف</p>
+                        <p>• أحمد هاني عبدالحميد</p>
+                        <p>• أحمد محمد الحنوني حسن</p>
+                        <p>• ثابت حلمي خليل مصطفي</p>
+                        <p>• بلال أحمد عبدالسميع</p>
+                        <p>• عبدالرحمن محمد علي</p>
+                        <p>• عبدالله علاء عبدالوهاب</p>
+                        <p>• محمد رضا صالح السيد</p>
+                    </div>
+                    <p class="supervisor">تحت إشراف: أ.د/ إيهاب عاشور • م.م/ أحمد أبو الهيجات</p>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/settings.js"></script>
+
+</body>
+</html>

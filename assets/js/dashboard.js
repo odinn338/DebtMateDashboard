@@ -498,16 +498,3 @@ function getFromLocalStorage(key) {
     return data ? JSON.parse(data) : null;
 }
 
-// ============================================
-// Console Message
-// ============================================
-console.log(`
-%c
-╔══════════════════════════════════════╗
-║      🎯 Debt Mate Dashboard 🎯      ║
-║        Version 1.0.0                 ║
-║        Made with ❤️ by BIS-88       ║
-╚══════════════════════════════════════╝
-`, 'color: #DFB6B2; font-weight: bold; font-size: 12px;');
-
-console.log('%c✅ All systems operational!', 'color: #4CAF50; font-weight: bold;');

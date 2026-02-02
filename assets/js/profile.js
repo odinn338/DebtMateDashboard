@@ -444,7 +444,3 @@ document.addEventListener('input', function(e) {
     }
 });
 
-// ============================================
-// Console Message
-// ============================================
-console.log('%c👤 Profile Page Ready!', 'color: #DFB6B2; font-weight: bold; font-size: 14px;');

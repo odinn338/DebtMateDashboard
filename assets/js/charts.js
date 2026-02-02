@@ -493,4 +493,3 @@ window.chartFunctions = {
     createCategoryChart
 };
 
-console.log('✅ Charts module loaded successfully');

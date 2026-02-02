@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debt Mate - التقارير المالية</title>
+    
+    <!-- ربط ملفات CSS -->
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/reports.css">
+    
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-coins"></i>
+            <h2>Debt Mate</h2>
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="debts.html" class="nav-item">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <span>الديون</span>
+            </a>
+            <a href="payments.html" class="nav-item">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>السداد</span>
+            </a>
+            <a href="reports.html" class="nav-item active">
+                <i class="fas fa-chart-line"></i>
+                <span>التقارير</span>
+            </a>
+            <a href="notifications.html" class="nav-item">
+                <i class="fas fa-bell"></i>
+                <span>التنبيهات</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>الإعدادات</span>
+            </a>
+        </nav>
+
+        <div class="user-profile">
+            <div class="user-avatar">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="user-info">
+                <h4>أحمد محمد</h4>
+                <p>مدير النظام</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <header class="page-header">
+            <div class="header-content">
+                <h1><i class="fas fa-chart-line"></i> التقارير المالية</h1>
+                <p>تحليلات شاملة وتقارير تفصيلية عن حالتك المالية</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn-secondary" id="printReportBtn">
+                    <i class="fas fa-print"></i>
+                    طباعة التقرير
+                </button>
+                <button class="btn-primary" id="exportReportBtn">
+                    <i class="fas fa-download"></i>
+                    تصدير PDF
+                </button>
+            </div>
+        </header>
+
+        <!-- Report Period Filter -->
+        <section class="period-filter">
+            <div class="period-buttons">
+                <button class="period-btn" data-period="week">أسبوع</button>
+                <button class="period-btn active" data-period="month">شهر</button>
+                <button class="period-btn" data-period="quarter">3 أشهر</button>
+                <button class="period-btn" data-period="year">سنة</button>
+                <button class="period-btn" data-period="custom">مخصص</button>
+            </div>
+            <div class="custom-date-range" style="display: none;">
+                <input type="date" id="startDate">
+                <span>إلى</span>
+                <input type="date" id="endDate">
+                <button class="btn-apply">تطبيق</button>
+            </div>
+        </section>
+
+        <!-- Summary Cards -->
+        <section class="summary-cards">
+            <div class="summary-card income">
+                <div class="card-icon">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+                <div class="card-content">
+                    <h3>إجمالي الديون الجديدة</h3>
+                    <p class="card-value">18,500 ج.م</p>
+                    <span class="card-change negative">
+                        <i class="fas fa-arrow-up"></i>
+                        +15% عن الشهر الماضي
+                    </span>
+                </div>
+            </div>
+
+            <div class="summary-card expense">
+                <div class="card-icon">
+                    <i class="fas fa-arrow-up"></i>
+                </div>
+                <div class="card-content">
+                    <h3>إجمالي المدفوعات</h3>
+                    <p class="card-value">12,340 ج.م</p>
+                    <span class="card-change positive">
+                        <i class="fas fa-arrow-down"></i>
+                        -8% عن الشهر الماضي
+                    </span>
+                </div>
+            </div>
+
+            <div class="summary-card balance">
+                <div class="card-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <div class="card-content">
+                    <h3>الفرق</h3>
+                    <p class="card-value">+6,160 ج.م</p>
+                    <span class="card-change warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        زيادة في الديون
+                    </span>
+                </div>
+            </div>
+
+            <div class="summary-card rate">
+                <div class="card-icon">
+                    <i class="fas fa-percent"></i>
+                </div>
+                <div class="card-content">
+                    <h3>معدل السداد</h3>
+                    <p class="card-value">67%</p>
+                    <span class="card-change positive">
+                        <i class="fas fa-check"></i>
+                        جيد
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts-grid">
+            
+            <!-- Chart 1: Monthly Trend -->
+            <div class="chart-card large">
+                <div class="chart-header">
+                    <h3><i class="fas fa-chart-area"></i> الاتجاه الشهري</h3>
+                    <div class="chart-controls">
+                        <button class="chart-btn active">الديون</button>
+                        <button class="chart-btn">المدفوعات</button>
+                        <button class="chart-btn">كلاهما</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="monthlyTrendChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Chart 2: Category Breakdown -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3><i class="fas fa-chart-pie"></i> التوزيع حسب الفئة</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="categoryChart"></canvas>
+                </div>
+                <div class="chart-legend-custom">
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background: #2196F3;"></span>
+                        <span>بنوك (40%)</span>
+                        <strong>10,400 ج.م</strong>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background: #4CAF50;"></span>
+                        <span>فواتير (25%)</span>
+                        <strong>6,500 ج.م</strong>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background: #FF9800;"></span>
+                        <span>قروض (30%)</span>
+                        <strong>7,800 ج.م</strong>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background: #9C27B0;"></span>
+                        <span>أخرى (5%)</span>
+                        <strong>1,300 ج.م</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart 3: Payment Methods -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3><i class="fas fa-credit-card"></i> طرق السداد</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="paymentMethodsChart"></canvas>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Detailed Tables -->
+        <section class="detailed-section">
+            
+            <!-- Top Debts -->
+            <div class="detail-card">
+                <div class="detail-header">
+                    <h3><i class="fas fa-trophy"></i> أكبر الديون</h3>
+                    <a href="debts.html" class="link-more">عرض الكل</a>
+                </div>
+                <div class="detail-list">
+                    <div class="detail-item">
+                        <div class="item-info">
+                            <i class="fas fa-car"></i>
+                            <div>
+                                <h4>قسط السيارة</h4>
+                                <p>120,000 ج.م - متبقي 78,000 ج.م</p>
+                            </div>
+                        </div>
+                        <div class="item-progress">
+                            <div class="progress-bar-small">
+                                <div class="progress-fill" style="width: 35%;"></div>
+                            </div>
+                            <span>35%</span>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <div class="item-info">
+                            <i class="fas fa-university"></i>
+                            <div>
+                                <h4>قسط البنك</h4>
+                                <p>24,000 ج.م - متبقي 12,000 ج.م</p>
+                            </div>
+                        </div>
+                        <div class="item-progress">
+                            <div class="progress-bar-small">
+                                <div class="progress-fill" style="width: 50%;"></div>
+                            </div>
+                            <span>50%</span>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <div class="item-info">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <div>
+                                <h4>قرض شخصي</h4>
+                                <p>15,000 ج.م - مسدد بالكامل</p>
+                            </div>
+                        </div>
+                        <div class="item-progress">
+                            <div class="progress-bar-small">
+                                <div class="progress-fill success" style="width: 100%;"></div>
+                            </div>
+                            <span>100%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Payments -->
+            <div class="detail-card">
+                <div class="detail-header">
+                    <h3><i class="fas fa-history"></i> آخر المدفوعات</h3>
+                    <a href="payments.html" class="link-more">عرض الكل</a>
+                </div>
+                <div class="detail-list">
+                    <div class="detail-item">
+                        <div class="item-info">
+                            <div class="payment-date">
+                                <span class="day">12</span>
+                                <span class="month">فبراير</span>
+                            </div>
+                            <div>
+                                <h4>قسط البنك الشهري</h4>
+                                <p>بطاقة ائتمان</p>
+                            </div>
+                        </div>
+                        <div class="item-amount success">
+                            <i class="fas fa-arrow-down"></i>
+                            2,000 ج.م
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <div class="item-info">
+                            <div class="payment-date">
+                                <span class="day">11</span>
+                                <span class="month">فبراير</span>
+                            </div>
+                            <div>
+                                <h4>فاتورة الكهرباء</h4>
+                                <p>نقدي</p>
+                            </div>
+                        </div>
+                        <div class="item-amount success">
+                            <i class="fas fa-arrow-down"></i>
+                            500 ج.م
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <div class="item-info">
+                            <div class="payment-date">
+                                <span class="day">10</span>
+                                <span class="month">فبراير</span>
+                            </div>
+                            <div>
+                                <h4>اشتراك الإنترنت</h4>
+                                <p>محفظة إلكترونية</p>
+                            </div>
+                        </div>
+                        <div class="item-amount success">
+                            <i class="fas fa-arrow-down"></i>
+                            340 ج.م
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Financial Insights -->
+        <section class="insights-section">
+            <h2><i class="fas fa-lightbulb"></i> رؤى وتوصيات مالية</h2>
+            <div class="insights-grid">
+                
+                <div class="insight-card positive">
+                    <div class="insight-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="insight-content">
+                        <h4>التزام ممتاز</h4>
+                        <p>معدل السداد الخاص بك 67% وهو معدل جيد. استمر في الالتزام بالمواعيد!</p>
+                    </div>
+                </div>
+
+                <div class="insight-card warning">
+                    <div class="insight-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="insight-content">
+                        <h4>انتبه!</h4>
+                        <p>لديك دينان متأخران بقيمة 2,500 ج.م. ننصح بالسداد فوراً لتجنب الغرامات.</p>
+                    </div>
+                </div>
+
+                <div class="insight-card info">
+                    <div class="insight-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="insight-content">
+                        <h4>توقعات</h4>
+                        <p>بناءً على معدل سدادك الحالي، ستنتهي من جميع ديونك خلال 18 شهراً تقريباً.</p>
+                    </div>
+                </div>
+
+                <div class="insight-card suggestion">
+                    <div class="insight-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="insight-content">
+                        <h4>اقتراح</h4>
+                        <p>يمكنك توفير 340 ج.م شهرياً عن طريق إعادة جدولة ديونك. تواصل مع البنك!</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JavaScript Files -->
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/reports.js"></script>
+
+</body>
+</html>
